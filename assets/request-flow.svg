@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-label="Life of a request on the proxy: verify JWT (401), inspect body (400), tools/call check (other methods get a null result), RBAC check (403), forward upstream (502), upstream result returned">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070b18"/>
+      <stop offset="1" stop-color="#0b1a2e"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="420" rx="24" fill="url(#bg)"/>
+
+  <g font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif">
+    <text x="40" y="52" font-size="24" font-weight="700" fill="#f1f5f9">Life of a request on <tspan font-family="Cascadia Code, Consolas, Menlo, monospace" fill="#6ee7b7">:8080</tspan></text>
+    <text x="40" y="80" font-size="16" fill="#8fa3c0">Every step can stop the request. Only permitted tools/call requests reach an upstream server.</text>
+
+    <!-- arrows between cards -->
+    <g stroke="#7dd3fc" stroke-width="2">
+      <line x1="205" y1="160" x2="227" y2="160" marker-end="url(#arr)"/>
+      <line x1="401" y1="160" x2="423" y2="160" marker-end="url(#arr)"/>
+      <line x1="597" y1="160" x2="619" y2="160" marker-end="url(#arr)"/>
+      <line x1="793" y1="160" x2="815" y2="160" marker-end="url(#arr)"/>
+      <line x1="989" y1="160" x2="1011" y2="160" marker-end="url(#arr)"/>
+    </g>
+
+    <!-- failure branches -->
+    <g stroke-width="2" stroke-dasharray="5 5" fill="none">
+      <line x1="120" y1="212" x2="120" y2="270" stroke="#f43f5e"/>
+      <line x1="316" y1="212" x2="316" y2="270" stroke="#f43f5e"/>
+      <line x1="512" y1="212" x2="512" y2="270" stroke="#64748b"/>
+    </g>
+    <text x="522" y="246" font-size="13" fill="#94a3b8">other methods</text>
+    <g stroke-width="2" stroke-dasharray="5 5" fill="none">
+      <line x1="708" y1="212" x2="708" y2="270" stroke="#f43f5e"/>
+      <line x1="904" y1="212" x2="904" y2="270" stroke="#f43f5e"/>
+    </g>
+
+    <!-- stage cards -->
+    <g>
+      <!-- 1 -->
+      <rect x="35" y="108" width="170" height="104" rx="14" fill="#10233f" stroke="#38bdf8" stroke-opacity="0.7" stroke-width="1.5"/>
+      <circle cx="61" cy="134" r="13" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8"/>
+      <text x="61" y="139" text-anchor="middle" font-size="14" font-weight="700" fill="#7dd3fc">1</text>
+      <text x="120" y="172" text-anchor="middle" font-size="18" font-weight="700" fill="#e2e8f0">Verify JWT</text>
+      <text x="120" y="196" text-anchor="middle" font-size="14" fill="#a5b4d0">RS256 · exp · iss</text>
+      <!-- 2 -->
+      <rect x="231" y="108" width="170" height="104" rx="14" fill="#10233f" stroke="#38bdf8" stroke-opacity="0.7" stroke-width="1.5"/>
+      <circle cx="257" cy="134" r="13" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8"/>
+      <text x="257" y="139" text-anchor="middle" font-size="14" font-weight="700" fill="#7dd3fc">2</text>
+      <text x="316" y="172" text-anchor="middle" font-size="18" font-weight="700" fill="#e2e8f0">Inspect body</text>
+      <text x="316" y="196" text-anchor="middle" font-size="14" fill="#a5b4d0">JSON-RPC · size cap</text>
+      <!-- 3 -->
+      <rect x="427" y="108" width="170" height="104" rx="14" fill="#10233f" stroke="#38bdf8" stroke-opacity="0.7" stroke-width="1.5"/>
+      <circle cx="453" cy="134" r="13" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8"/>
+      <text x="453" y="139" text-anchor="middle" font-size="14" font-weight="700" fill="#7dd3fc">3</text>
+      <text x="512" y="172" text-anchor="middle" font-size="18" font-weight="700" fill="#e2e8f0">tools/call?</text>
+      <text x="512" y="196" text-anchor="middle" font-size="14" fill="#a5b4d0">read params.name</text>
+      <!-- 4 -->
+      <rect x="623" y="108" width="170" height="104" rx="14" fill="#2a2110" stroke="#fbbf24" stroke-opacity="0.75" stroke-width="1.5"/>
+      <circle cx="649" cy="134" r="13" fill="#fbbf24" fill-opacity="0.2" stroke="#fbbf24"/>
+      <text x="649" y="139" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">4</text>
+      <text x="708" y="172" text-anchor="middle" font-size="18" font-weight="700" fill="#fef3c7">Check RBAC</text>
+      <text x="708" y="196" text-anchor="middle" font-size="14" fill="#d6c79e">agent × server × tool</text>
+      <!-- 5 -->
+      <rect x="819" y="108" width="170" height="104" rx="14" fill="#10233f" stroke="#38bdf8" stroke-opacity="0.7" stroke-width="1.5"/>
+      <circle cx="845" cy="134" r="13" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8"/>
+      <text x="845" y="139" text-anchor="middle" font-size="14" font-weight="700" fill="#7dd3fc">5</text>
+      <text x="904" y="172" text-anchor="middle" font-size="18" font-weight="700" fill="#e2e8f0">Forward</text>
+      <text x="904" y="196" text-anchor="middle" font-size="14" fill="#a5b4d0">POST to upstream</text>
+      <!-- done -->
+      <rect x="1015" y="108" width="150" height="104" rx="14" fill="#0f2a22" stroke="#34d399" stroke-width="2"/>
+      <path d="M1076 138 L1086 148 L1104 128" fill="none" stroke="#6ee7b7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1090" y="178" text-anchor="middle" font-size="18" font-weight="700" fill="#d1fae5">Result</text>
+      <text x="1090" y="198" text-anchor="middle" font-size="14" fill="#a7d8c3">back to the agent</text>
+    </g>
+
+    <!-- outcome pills -->
+    <g text-anchor="middle">
+      <rect x="45" y="272" width="150" height="66" rx="12" fill="#2a0f1a" stroke="#f43f5e" stroke-opacity="0.8"/>
+      <text x="120" y="301" font-size="21" font-weight="800" fill="#fb7185">401</text>
+      <text x="120" y="324" font-size="14" font-family="Cascadia Code, Consolas, Menlo, monospace" fill="#fda4af">unauthorized</text>
+
+      <rect x="241" y="272" width="150" height="66" rx="12" fill="#2a0f1a" stroke="#f43f5e" stroke-opacity="0.8"/>
+      <text x="316" y="301" font-size="21" font-weight="800" fill="#fb7185">400</text>
+      <text x="316" y="324" font-size="14" font-family="Cascadia Code, Consolas, Menlo, monospace" fill="#fda4af">bad_request</text>
+
+      <rect x="437" y="272" width="150" height="66" rx="12" fill="#172031" stroke="#64748b"/>
+      <text x="512" y="301" font-size="21" font-weight="800" fill="#cbd5e1">200</text>
+      <text x="512" y="324" font-size="14" font-family="Cascadia Code, Consolas, Menlo, monospace" fill="#94a3b8">result: null</text>
+
+      <rect x="623" y="272" width="170" height="66" rx="12" fill="#2a0f1a" stroke="#f43f5e" stroke-opacity="0.8"/>
+      <text x="708" y="301" font-size="21" font-weight="800" fill="#fb7185">403</text>
+      <text x="708" y="324" font-size="13" font-family="Cascadia Code, Consolas, Menlo, monospace" fill="#fda4af">tool_not_permitted</text>
+
+      <rect x="829" y="272" width="150" height="66" rx="12" fill="#2a0f1a" stroke="#f43f5e" stroke-opacity="0.8"/>
+      <text x="904" y="301" font-size="21" font-weight="800" fill="#fb7185">502</text>
+      <text x="904" y="324" font-size="14" font-family="Cascadia Code, Consolas, Menlo, monospace" fill="#fda4af">bad_gateway</text>
+    </g>
+
+    <text x="40" y="382" font-size="15" fill="#8fa3c0">No matching permission row means deny. The target server is the first ID in the token's <tspan font-family="Cascadia Code, Consolas, Menlo, monospace" fill="#cbd5e1">servers</tspan> claim, or the oldest active server.</text>
+  </g>
+</svg>
